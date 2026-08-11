@@ -8,8 +8,9 @@ from slack_sdk import WebClient
 SLACK_TOKEN = os.environ["SLACK_TOKEN"]
 TEMPO_TOKEN = os.environ["TEMPO_TOKEN"]
 
-CANAL_SOPORTE = "C04RHGJ0VHA"
-CANAL_PROYECTO = "C08CUTDAMHS"
+# TEST TEMPORAL: canales apuntando a C0A055K78SG para probar el workflow. Revertir despues del test.
+CANAL_SOPORTE = "C0A055K78SG"
+CANAL_PROYECTO = "C0A055K78SG"
 
 EQUIPO_SOPORTE = {
     "cmillan@wodobox.com": "88e3bd0c-c5ed-490a-b7bc-7e0d1ab04a17",
