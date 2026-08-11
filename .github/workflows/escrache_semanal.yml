@@ -1,0 +1,30 @@
+name: Escrache Semanal Tempo
+
+on:
+  schedule:
+    # Viernes 15:00 hora de Chile.
+    # Chile usa UTC-4 en horario estandar (CLT) y UTC-3 en horario de verano (CLST, aprox. sept-abril).
+    # Este cron esta fijado para CLT (UTC-4) = 19:00 UTC. En horario de verano correra 16:00 CLST.
+    - cron: '0 19 * * 5'
+  workflow_dispatch:
+
+jobs:
+  escrache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar script
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          TEMPO_TOKEN: ${{ secrets.TEMPO_TOKEN }}
+        run: python escrache_semanal.py
