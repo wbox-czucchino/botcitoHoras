@@ -108,8 +108,7 @@ def escrache_semanal():
     fechas = calcular_rango_fechas()
     print(f"\n[{hoy.strftime('%d/%m %H:%M')}] --- INICIANDO AUDITORÍA ---")
     print(f"Buscando logs desde {fechas['desde_latam']} hasta {fechas['hasta_latam']}")
-    # TEST TEMPORAL: se comenta SOPORTE para reenviar solo PROYECTO tras arreglar el canal. Revertir despues.
-    # auditar_equipo("SOPORTE", EQUIPO_SOPORTE, CANAL_SOPORTE, fechas)
+    auditar_equipo("SOPORTE", EQUIPO_SOPORTE, CANAL_SOPORTE, fechas)
     auditar_equipo("PROYECTO", EQUIPO_PROYECTO, CANAL_PROYECTO, fechas)
 
 if __name__ == "__main__":
