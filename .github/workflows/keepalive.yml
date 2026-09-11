@@ -1,0 +1,34 @@
+name: Keepalive
+
+# Corre una vez por semana (lunes) solo para generar actividad real en el repo.
+# GitHub despriorizacion/demora los workflows con cron en repos con poca actividad,
+# lo que estaba causando que "Escrache Semanal Tempo" corriera cada vez mas tarde
+# los viernes (o directamente no corriera). Este job hace un commit trivial
+# para que el repo se vea "activo" y el cron del viernes sea confiable.
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'  # Lunes 13:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Actualizar heartbeat
+        run: |
+          mkdir -p .github
+          date -u +"Ultimo heartbeat: %Y-%m-%d %H:%M:%S UTC" > .github/last_heartbeat.txt
+
+      - name: Commitear heartbeat
+        run: |
+          git config user.name "keepalive-bot"
+          git config user.email "actions@github.com"
+          git add .github/last_heartbeat.txt
+          git diff --cached --quiet && echo "Sin cambios" || git commit -m "chore: heartbeat semanal (keepalive)"
+          git push
