@@ -2,10 +2,12 @@ name: Escrache Semanal Tempo
 
 on:
   schedule:
-    # Viernes 15:00 hora de Chile.
-    # Chile usa UTC-4 en horario estandar (CLT) y UTC-3 en horario de verano (CLST, aprox. sept-abril).
-    # Este cron esta fijado para CLT (UTC-4) = 19:00 UTC. En horario de verano correra 16:00 CLST.
-    - cron: '0 19 * * 5'
+    # Viernes ~14:00 hora de Chile.
+    # Programado 2 horas antes de lo necesario y en un minuto "no redondo" (:07)
+    # porque GitHub atrasa los crons programados, sobre todo los que caen en punto.
+    # 17:07 UTC = 14:07 Chile en horario de verano (UTC-3, aprox. sept-abril)
+    #           = 13:07 Chile en horario estandar (UTC-4).
+    - cron: '7 17 * * 5'
   workflow_dispatch:
 
 jobs:
