@@ -16,7 +16,6 @@ EQUIPO_SOPORTE = {
     "ccarriel@wodobox.com": "712020:3475eed9-0c6d-4d92-bd8e-f02f1cf37766",
     "fmunoz@wodobox.com": "712020:27045643-7d23-4ae8-aa9c-ccf0e438742c",
     "mgarin@wodobox.com": "712020:2fca042c-515d-4eac-96cf-44b50817272d",
-    "mmolina@wodobox.com": "712020:082212fc-367e-415a-b854-1038f4df866a",
     "wcartaya@wodobox.com": "712020:e76d1fd3-ab10-4d60-b2db-b4e6c9157c20"
 }
 
